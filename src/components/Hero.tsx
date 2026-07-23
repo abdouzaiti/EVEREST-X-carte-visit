@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Calendar, Sparkles } from 'lucide-react';
+import { ArrowRight, Calendar } from 'lucide-react';
 import { Lightning } from './Lightning';
 
 interface HeroProps {
@@ -19,11 +19,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExplorePortfolio })
       </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center mt-[-4rem] sm:mt-0">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0C579F]/10 border border-[#0C579F]/30 text-[#0C579F] text-xs sm:text-sm font-semibold mb-8">
-          <Sparkles className="w-4 h-4" />
-          <span>Next-Gen Digital Agency</span>
-        </div>
-
         {/* Logo Image */}
         <div className="mb-8 flex items-center justify-center">
           <img 
@@ -33,10 +28,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExplorePortfolio })
             referrerPolicy="no-referrer"
           />
         </div>
-
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight max-w-4xl px-2">
-          Elevating Brands to <br className="hidden sm:block" /><span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-[#0C579F]">New Heights</span>
-        </h1>
 
         <p className="text-base sm:text-lg md:text-xl text-[#A3A3A3] max-w-2xl mx-auto leading-relaxed mb-10 px-4 sm:px-0">
           Building bold brands, modern digital experiences, and scalable solutions for ambitious companies worldwide.
