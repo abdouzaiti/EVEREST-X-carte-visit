@@ -17,6 +17,14 @@ export const socialLinks: SocialLink[] = [
     iconName: 'MessageSquare',
     url: 'https://wa.me/213559391211',
   },
+  {
+    id: 'email',
+    title: 'Email',
+    category: 'Direct Contact',
+    description: 'everestx27@gmail.com - Drop us a message anytime',
+    iconName: 'Mail',
+    url: 'mailto:everestx27@gmail.com',
+  },
 ];
 
 export const servicesList: ServiceItem[] = [

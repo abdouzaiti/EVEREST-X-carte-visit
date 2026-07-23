@@ -31,13 +31,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExplorePortfolio })
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <button
-            onClick={onExplorePortfolio}
+          <a
+            href="https://everest-x.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-[#0C579F] hover:bg-[#0a4680] text-white font-semibold text-sm tracking-wide shadow-xl shadow-[#0C579F]/30 hover:scale-105 transition-all flex items-center justify-center gap-2 group"
           >
             <span>View Portfolio</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </a>
 
           <button
             onClick={onOpenBooking}
@@ -48,6 +50,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExplorePortfolio })
           </button>
         </div>
 
+
+        {/* Premium Scroll Down Indicator */}
+        <div className="absolute -bottom-28 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer opacity-80 hover:opacity-100 transition-opacity z-20"
+             onClick={() => {
+               window.scrollTo({ top: window.innerHeight * 0.7, behavior: 'smooth' });
+             }}
+        >
+          <span className="text-[10px] uppercase tracking-widest text-[#A3A3A3] font-semibold">Scroll Down</span>
+          <div className="w-5 h-9 rounded-full border-2 border-white/20 flex items-start justify-center p-1 bg-[#080808]/80 backdrop-blur-md">
+            <div className="w-1.5 h-2.5 bg-[#0C579F] rounded-full animate-bounce shadow-[0_0_8px_rgba(12,87,159,0.8)]" />
+          </div>
+        </div>
 
       </div>
     </section>

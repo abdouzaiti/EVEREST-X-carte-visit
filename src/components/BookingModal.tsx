@@ -14,7 +14,6 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
     email: '',
     service: servicesList[0].title,
     date: '',
-    time: '10:00 AM',
     notes: '',
   });
 
@@ -22,12 +21,22 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const text = encodeURIComponent(
+      `Hello Everest X! I'd like to book a consultation.\n\n` +
+      `Name: ${form.name}\n` +
+      `Email: ${form.email}\n` +
+      `Service: ${form.service}\n` +
+      `Date: ${form.date}\n` +
+      (form.notes ? `Notes: ${form.notes}` : '')
+    );
+    const whatsappUrl = `https://wa.me/213559391211?text=${text}`;
+    window.open(whatsappUrl, '_blank');
     setSubmitted(true);
   };
 
   const resetAndClose = () => {
     setSubmitted(false);
-    setForm({ name: '', email: '', service: servicesList[0].title, date: '', time: '10:00 AM', notes: '' });
+    setForm({ name: '', email: '', service: servicesList[0].title, date: '', notes: '' });
     onClose();
   };
 
@@ -99,35 +108,19 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-medium text-[#A3A3A3] mb-1">Primary Interest</label>
-                <select
-                  value={form.service}
-                  onChange={(e) => setForm({ ...form, service: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-[#1a1a1a] border border-white/10 text-white text-sm focus:outline-none focus:border-[#0C579F] transition-colors"
-                >
-                  {servicesList.map((s) => (
-                    <option key={s.id} value={s.title}>
-                      {s.title}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-medium text-[#A3A3A3] mb-1">Preferred Time</label>
-                <select
-                  value={form.time}
-                  onChange={(e) => setForm({ ...form, time: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-[#1a1a1a] border border-white/10 text-white text-sm focus:outline-none focus:border-[#0C579F] transition-colors"
-                >
-                  <option value="10:00 AM">10:00 AM PST</option>
-                  <option value="01:00 PM">01:00 PM PST</option>
-                  <option value="03:30 PM">03:30 PM PST</option>
-                  <option value="05:00 PM">05:00 PM PST</option>
-                </select>
-              </div>
+            <div>
+              <label className="block text-xs font-medium text-[#A3A3A3] mb-1">Primary Interest / Service</label>
+              <select
+                value={form.service}
+                onChange={(e) => setForm({ ...form, service: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-[#1a1a1a] border border-white/10 text-white text-sm focus:outline-none focus:border-[#0C579F] transition-colors"
+              >
+                {servicesList.map((s) => (
+                  <option key={s.id} value={s.title}>
+                    {s.title}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>

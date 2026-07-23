@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Hero } from './components/Hero';
 import { SocialCards } from './components/SocialCards';
-import { Footer } from './components/Footer';
 import { BookingModal } from './components/BookingModal';
 import { QRCodeModal } from './components/QRCodeModal';
 import { Lightning } from './components/Lightning';
@@ -101,9 +100,6 @@ END:VCARD`;
 
 
       </main>
-
-      {/* Footer */}
-      <Footer />
 
       {/* Modals */}
       <BookingModal
