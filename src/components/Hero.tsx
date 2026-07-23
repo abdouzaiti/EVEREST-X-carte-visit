@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Calendar, Compass } from 'lucide-react';
+import { ArrowRight, Calendar, Sparkles } from 'lucide-react';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -8,23 +8,30 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExplorePortfolio }) => {
   return (
-    <section className="relative pt-6 pb-20 px-4 sm:px-8 overflow-hidden">
-      {/* Background soft blue lighting & subtle grid / mountain silhouette */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-[#0C579F]/15 blur-[120px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(12,87,159,0.15),rgba(255,255,255,0))] pointer-events-none -z-10" />
+    <section className="relative pt-12 pb-28 px-4 sm:px-8 overflow-hidden">
+      {/* Background soft blue lighting */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-[#0C579F]/15 blur-[140px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0C579F]/10 border border-[#0C579F]/30 text-[#0C579F] text-xs font-semibold mb-6">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>Next-Gen Digital Agency</span>
+        </div>
+
         {/* Logo Image */}
-        <div className="mx-auto mb-4 flex items-center justify-center">
+        <div className="mx-auto mb-6 flex items-center justify-center">
           <img 
             src="/logo.png" 
             alt="EVEREST X Logo" 
-            className="w-48 h-48 sm:w-60 sm:h-60 object-contain drop-shadow-[0_20px_45px_rgba(12,87,159,0.5)]"
+            className="w-36 h-36 sm:w-48 sm:h-48 object-contain drop-shadow-[0_20px_45px_rgba(12,87,159,0.5)]"
             referrerPolicy="no-referrer"
           />
         </div>
 
-        {/* Small description */}
+        <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+          Elevating Brands to <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-[#0C579F]">New Heights</span>
+        </h1>
+
         <p className="text-base sm:text-lg text-[#A3A3A3] max-w-xl mx-auto leading-relaxed mb-10">
           Building bold brands, modern digital experiences, and scalable solutions for ambitious companies worldwide.
         </p>
@@ -49,21 +56,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExplorePortfolio })
             <span>Book a Meeting</span>
           </button>
         </div>
+      </div>
 
-
-        {/* Premium Scroll Down Indicator */}
-        <div className="absolute -bottom-28 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer opacity-80 hover:opacity-100 transition-opacity z-20"
-             onClick={() => {
-               window.scrollTo({ top: window.innerHeight * 0.7, behavior: 'smooth' });
-             }}
-        >
-          <span className="text-[10px] uppercase tracking-widest text-[#A3A3A3] font-semibold">Scroll Down</span>
-          <div className="w-5 h-9 rounded-full border-2 border-white/20 flex items-start justify-center p-1 bg-[#080808]/80 backdrop-blur-md">
-            <div className="w-1.5 h-2.5 bg-[#0C579F] rounded-full animate-bounce shadow-[0_0_8px_rgba(12,87,159,0.8)]" />
-          </div>
+      {/* Premium Scroll Down Indicator */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer opacity-80 hover:opacity-100 transition-opacity z-20"
+           onClick={() => {
+             window.scrollTo({ top: window.innerHeight * 0.7, behavior: 'smooth' });
+           }}
+      >
+        <span className="text-[10px] uppercase tracking-widest text-[#A3A3A3] font-semibold">Scroll Down</span>
+        <div className="w-5 h-9 rounded-full border-2 border-white/20 flex items-start justify-center p-1 bg-[#080808]/80 backdrop-blur-md">
+          <div className="w-1.5 h-2.5 bg-[#0C579F] rounded-full animate-bounce shadow-[0_0_8px_rgba(12,87,159,0.8)]" />
         </div>
-
       </div>
     </section>
   );
 };
+
