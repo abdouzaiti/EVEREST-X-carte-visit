@@ -119,10 +119,20 @@ export const Lightning: React.FC<LightningProps> = ({
       void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
           vec2 uv = fragCoord / iResolution.xy;
           uv = 2.0 * uv - 1.0;
-          uv.x *= iResolution.x / iResolution.y;
+          
+          // Fix aspect ratio so it looks good on both desktop and mobile
+          float aspect = iResolution.x / iResolution.y;
+          if (aspect > 1.0) {
+              uv.x *= aspect;
+          } else {
+              uv.y /= aspect;
+          }
+          
           uv.x += uXOffset;
           
-          uv += 2.0 * fbm(uv * uSize + 0.8 * iTime * uSpeed) - 1.0;
+          float displacement = 2.0 * fbm(uv * uSize + 0.8 * iTime * uSpeed) - 1.0;
+          float waggleScale = min(1.0, aspect); // Scale down waggle on mobile
+          uv += displacement * waggleScale;
           
           float dist = abs(uv.x);
           vec3 baseColor = hsv2rgb(vec3(uHue / 360.0, 0.7, 0.8));
