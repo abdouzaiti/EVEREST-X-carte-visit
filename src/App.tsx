@@ -4,6 +4,7 @@ import { SocialCards } from './components/SocialCards';
 import { Footer } from './components/Footer';
 import { BookingModal } from './components/BookingModal';
 import { QRCodeModal } from './components/QRCodeModal';
+import { Lightning } from './components/Lightning';
 import { socialLinks } from './data';
 import { SocialLink } from './types';
 import { Check } from 'lucide-react';
@@ -57,6 +58,11 @@ END:VCARD`;
 
   return (
     <div className="min-h-screen bg-[#080808] text-white font-sans relative overflow-x-hidden selection:bg-[#0C579F] selection:text-white">
+      {/* Lightning Background Effect */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
+        <Lightning />
+      </div>
+
       {/* Mouse Spotlight Glow Effect */}
       <div
         className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-40 hidden sm:block"
