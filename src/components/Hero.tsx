@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, Calendar } from 'lucide-react';
+import { ArrowRight, Calendar, Sparkles } from 'lucide-react';
+import { Lightning } from './Lightning';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -8,27 +9,41 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExplorePortfolio }) => {
   return (
-    <section className="relative pt-12 pb-28 px-4 sm:px-8 overflow-hidden">
+    <section className="relative pt-16 pb-32 px-4 sm:px-8 overflow-hidden min-h-screen flex items-center justify-center">
       {/* Background soft blue lighting */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-[#0C579F]/15 blur-[140px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#0C579F]/15 blur-[140px] rounded-full pointer-events-none -z-10" />
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
+      {/* Lightning Animation Background for the whole section */}
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+        <Lightning xOffset={0} />
+      </div>
+
+      <div className="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center mt-[-4rem] sm:mt-0">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0C579F]/10 border border-[#0C579F]/30 text-[#0C579F] text-xs sm:text-sm font-semibold mb-8">
+          <Sparkles className="w-4 h-4" />
+          <span>Next-Gen Digital Agency</span>
+        </div>
+
         {/* Logo Image */}
-        <div className="mx-auto mb-6 flex items-center justify-center">
+        <div className="mb-8 flex items-center justify-center">
           <img 
             src="/logo.png" 
             alt="EVEREST X Logo" 
-            className="w-36 h-36 sm:w-48 sm:h-48 object-contain drop-shadow-[0_20px_45px_rgba(12,87,159,0.5)]"
+            className="w-40 h-40 sm:w-56 sm:h-56 object-contain drop-shadow-[0_20px_45px_rgba(12,87,159,0.5)]"
             referrerPolicy="no-referrer"
           />
         </div>
 
-        <p className="text-base sm:text-lg text-[#A3A3A3] max-w-xl mx-auto leading-relaxed mb-10">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight max-w-4xl px-2">
+          Elevating Brands to <br className="hidden sm:block" /><span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-[#0C579F]">New Heights</span>
+        </h1>
+
+        <p className="text-base sm:text-lg md:text-xl text-[#A3A3A3] max-w-2xl mx-auto leading-relaxed mb-10 px-4 sm:px-0">
           Building bold brands, modern digital experiences, and scalable solutions for ambitious companies worldwide.
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 w-full sm:w-auto px-4 sm:px-0">
           <a
             href="https://everest-x.vercel.app/"
             target="_blank"
@@ -50,7 +65,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExplorePortfolio })
       </div>
 
       {/* Premium Scroll Down Indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer opacity-80 hover:opacity-100 transition-opacity z-20"
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer opacity-80 hover:opacity-100 transition-opacity z-20"
            onClick={() => {
              window.scrollTo({ top: window.innerHeight * 0.7, behavior: 'smooth' });
            }}
