@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Linkedin } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -21,15 +21,6 @@ export const Footer: React.FC = () => {
             title="Instagram"
           >
             <Instagram className="w-4 h-4" />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#0C579F] text-white flex items-center justify-center border border-white/10 transition-colors"
-            title="LinkedIn"
-          >
-            <Linkedin className="w-4 h-4" />
           </a>
         </div>
 
