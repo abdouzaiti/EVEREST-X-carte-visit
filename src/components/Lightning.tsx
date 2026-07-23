@@ -29,16 +29,24 @@ export const Lightning: React.FC<LightningProps> = ({
     }
 
     const resizeCanvas = () => {
-      if (canvas.parentElement && canvas.parentElement.clientWidth > 0 && canvas.parentElement.clientHeight > 0) {
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight;
-      } else {
-        canvas.width = canvas.clientWidth || 300;
-        canvas.height = canvas.clientHeight || 150;
+      if (!canvas || !gl) return;
+      const width = canvas.parentElement?.clientWidth || window.innerWidth;
+      const height = canvas.parentElement?.clientHeight || window.innerHeight;
+      if (width > 0 && height > 0) {
+        canvas.width = width;
+        canvas.height = height;
+        gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
       }
-      gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     };
     
+    resizeCanvas();
+
+    const resizeObserver = new ResizeObserver(() => {
+      resizeCanvas();
+    });
+    if (canvas.parentElement) {
+      resizeObserver.observe(canvas.parentElement);
+    }
     window.addEventListener("resize", resizeCanvas);
 
     const vertexShaderSource = `
@@ -220,6 +228,7 @@ export const Lightning: React.FC<LightningProps> = ({
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
+      resizeObserver.disconnect();
       cancelAnimationFrame(animationFrameId);
       
       if (gl && !gl.isContextLost()) {
